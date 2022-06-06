@@ -3,3 +3,5 @@ from .models import *
 # Register your models here.
 
 admin.site.register(Teacher)
+admin.site.register(Ixtisas)
+admin.site.register(Fen)
