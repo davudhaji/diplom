@@ -8,7 +8,7 @@ class TeacherViewSet(ModelViewSet):
     model = Teacher
     serializer_class = TeacherSerializer
     queryset = Teacher.objects.all()
-    http_method_names = ['get']
+    http_method_names = ['get', 'post','patch','delete']
     def list(self,request,*args, **kwargs):
         print("salammmm")
         print(self.request.query_params)
