@@ -76,7 +76,7 @@ services:
     volumes:
       - .:/code
       - ./media:/code/media
-      - ./static:/code/static
+      - ./static:/code/staticfiles
     ports:
       - "8070:8070"
     # links:
