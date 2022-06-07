@@ -10,10 +10,16 @@ class TeacherViewSet(ModelViewSet):
     queryset = Teacher.objects.all()
     http_method_names = ['get', 'post','patch','delete']
     def list(self,request,*args, **kwargs):
-        print("salammmm")
-        print(self.request.query_params)
-        print(Teacher.objects.filter(**self.request.query_params),'dataa')
-        queryset = Teacher.objects.all()
+        ftr = '__icontains'
+        filtr = {}
+        for i in self.request.query_params:
+            
+            filtr.update({i+ftr:self.request.query_params.get(i)})
+        print(filtr,'dataa')
+        if filtr:
+            queryset = Teacher.objects.filter(**filtr)
+        else:
+            queryset = Teacher.objects.all()
         serializer = TeacherSerializer(queryset, many=True)
         #self.request.query_params.get('order_by', None)
         #print(request.body)
@@ -39,7 +45,15 @@ class MeqaleViewSet(ModelViewSet):
     http_method_names = ['get', 'post','patch','delete']
 
     def list(self,request,*args, **kwargs):
-        queryset = Meqale.objects.all()
+        ftr = '__icontains'
+        filtr = {}
+        for i in self.request.query_params:
+            
+            filtr.update({i+ftr:self.request.query_params.get(i)})
+        if filtr:
+            queryset = Meqale.objects.filter(**filtr)
+        else:
+            queryset = Meqale.objects.all()
         serializer = MeqaleSerializer(queryset, many=True)
         return Response(serializer.data)
 
