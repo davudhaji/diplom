@@ -56,19 +56,32 @@ class Teacher(models.Model):
     herbi_mukellefiyet = models.BooleanField()
     faktiki_yasaadigi_unvan = models.CharField(max_length=250)
     qeydiyatda_oldugu_unvan = models.CharField(max_length=250)
-    #elmi_meqalelerin_sayi = models.ForeignKey()
+    elmi_meqalelerin_sayi = models.IntegerField(max_length=15)
+
+
+    def save(self,*args, **kwargs):
+        self.elmi_meqalelerin_sayi = self.meqale_set.count()
+
+        super(Teacher, self).save(*args, **kwargs)
+
+
+    def __str__ (self):
+            return self.ad + self.soyad
+
 
 
 class Ixtisas(models.Model):
     ad = models.CharField(max_length=80)
     kod = models.CharField(max_length=25)    
 
-
+    def __str__ (self):
+        return self.ad
 
 class Fen(models.Model):
     adi = models.CharField(max_length=100)
-
-
+    
+    def __str__ (self):
+            return self.adi
 
 class Meqale(models.Model):
     teacher = models.ForeignKey('Teacher',on_delete=models.CASCADE)
@@ -80,11 +93,16 @@ class Meqale(models.Model):
     index_nom = models.CharField(max_length=15)
     meqalenin_cap_oldugu_yer = models.CharField(max_length=150)
     tipi = models.ForeignKey('MeqaleTipi',on_delete=models.CASCADE)
+    
+    def __str__ (self):
+            return self.name
 
 
 class MeqaleTipi(models.Model):
     adi = models.CharField(max_length=150)
 
+    def __str__ (self):
+        return self.adi
 
 """
 Table -- >Teacher :
