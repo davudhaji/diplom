@@ -19,3 +19,14 @@ class TeacherViewSet(ModelViewSet):
         #print(request.body)
         return Response(serializer.data)
         
+class FenViewSet(ModelViewSet):
+    model = Fen
+    serializer_class = FenSerializer
+    queryset = Fen.objects.all()
+    http_method_names = ['get', 'post','patch','delete']
+ 
+class IxtisasViewSet(ModelViewSet):
+    model = Ixtisas
+    serializer_class = IxtisasSerializer
+    queryset = Ixtisas.objects.all()
+    http_method_names = ['get', 'post','patch','delete']
