@@ -36,7 +36,6 @@ AILE_VEZ = (
 )
 
 
-
 class Teacher(models.Model):
     ad = models.CharField(max_length=50)
     soyad = models.CharField(max_length=50)
@@ -68,6 +67,24 @@ class Ixtisas(models.Model):
 
 class Fen(models.Model):
     adi = models.CharField(max_length=100)
+
+
+
+class Meqale(models.Model):
+    teacher = models.ForeignKey('Teacher',on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    hem_muellifler = models.CharField(max_length=255,blank=True,null=True)
+    cap_olundugu_jurnal = models.CharField(max_length=250,blank=True,null=True)
+    ili = models.IntegerField(max_length=10)
+    sehfesi = models.IntegerField(max_length=25)
+    index_nom = models.CharField(max_length=15)
+    meqalenin_cap_oldugu_yer = models.CharField(max_length=150)
+    tipi = models.ForeignKey('MeqaleTipi',on_delete=models.CASCADE)
+
+
+class MeqaleTipi(models.Model):
+    adi = models.CharField(max_length=150)
+
 
 """
 Table -- >Teacher :

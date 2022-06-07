@@ -5,3 +5,6 @@ from .models import *
 admin.site.register(Teacher)
 admin.site.register(Ixtisas)
 admin.site.register(Fen)
+admin.site.register(Meqale)
+admin.site.register(MeqaleTipi)
+

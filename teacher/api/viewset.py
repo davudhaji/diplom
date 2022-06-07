@@ -30,3 +30,22 @@ class IxtisasViewSet(ModelViewSet):
     serializer_class = IxtisasSerializer
     queryset = Ixtisas.objects.all()
     http_method_names = ['get', 'post','patch','delete']
+
+
+class MeqaleViewSet(ModelViewSet):
+    model = Meqale
+    serializer_class = MeqaleSerializer
+    queryset = Meqale.objects.all()
+    http_method_names = ['get', 'post','patch','delete']
+
+    def list(self,request,*args, **kwargs):
+        queryset = Meqale.objects.all()
+        serializer = MeqaleSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class MeqaleTipiViewSet(ModelViewSet):
+    model = MeqaleTipi
+    serializer_class = MeqaleTipiSerializer
+    queryset = MeqaleTipi.objects.all()
+    http_method_names = ['get', 'post','patch','delete']

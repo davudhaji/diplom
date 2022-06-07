@@ -18,3 +18,16 @@ class IxtisasSerializer(serializers.ModelSerializer):
         model = Ixtisas
         fields = '__all__'
 
+
+class MeqaleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Meqale
+        fields = '__all__'
+
+
+
+class MeqaleTipiSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MeqaleTipi
+        fields = '__all__'
+
