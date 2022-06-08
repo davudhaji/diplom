@@ -56,13 +56,13 @@ class Teacher(models.Model):
     herbi_mukellefiyet = models.BooleanField()
     faktiki_yasaadigi_unvan = models.CharField(max_length=250)
     qeydiyatda_oldugu_unvan = models.CharField(max_length=250)
-    elmi_meqalelerin_sayi = models.IntegerField(max_length=15)
+    #elmi_meqalelerin_sayi = models.IntegerField(max_length=15)
 
 
-    def save(self,*args, **kwargs):
-        self.elmi_meqalelerin_sayi = self.meqale_set.count()
+    # def save(self,*args, **kwargs):
+    #     self.elmi_meqalelerin_sayi = self.meqale_set.count()
 
-        super(Teacher, self).save(*args, **kwargs)
+    #     super(Teacher, self).save(*args, **kwargs)
 
 
     def __str__ (self):

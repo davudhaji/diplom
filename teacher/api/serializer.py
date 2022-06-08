@@ -7,6 +7,11 @@ class TeacherSerializer(serializers.ModelSerializer):
         model = Teacher
         fields = '__all__'
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data.update({"elmi_meqalelerin_sayi":instance.meqale_set.count()})
+        return data
+
 class FenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fen
